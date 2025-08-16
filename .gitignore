@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+env/
+myenv/
+venv/
+.venv/
+
+# IDE configs
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+
+# Logs
+*.log
+
+# Flask specific
+instance/
+*.db
+
+
+# Installed packages
+*.dist-info/
+*.egg-info/
+*.exe

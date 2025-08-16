@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crowd Counter</title>
+    <link href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <!-- Header -->
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+                <h1 class="display-4 mb-3">
+                    <i class="fas fa-users me-3"></i>
+                     Crowd Counter
+                </h1>
+                <p class="lead">Upload an image to analyze crowd density and get an accurate count</p>
+            </div>
+        </div>
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="row mb-4">
+                    <div class="col-12">
+                        {% for category, message in messages %}
+                            <div class="alert alert-{% if category == 'error' %}danger{% else %}{{ category }}{% endif %} alert-dismissible fade show" role="alert">
+                                <i class="fas fa-{% if category == 'error' %}exclamation-triangle{% else %}info-circle{% endif %} me-2"></i>
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Upload Form -->
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-lg">
+                    <div class="card-body p-5">
+                        <h3 class="card-title text-center mb-4">
+                            <i class="fas fa-cloud-upload-alt me-2"></i>
+                            Upload Image
+                        </h3>
+                        
+                        <form action="{{ url_for('upload_file') }}" method="POST" enctype="multipart/form-data" id="uploadForm">
+                            <div class="mb-4">
+                                <label for="file" class="form-label">Select Image File</label>
+                                <div class="upload-area" id="uploadArea">
+                                    <div class="upload-content" id="uploadContent">
+                                        <i class="fas fa-cloud-upload-alt fa-3x mb-3"></i>
+                                        <h5>Drag & Drop your image here</h5>
+                                        <p class="text-muted">or click to browse</p>
+                                        <input type="file" class="form-control d-none" id="file" name="file" accept=".png,.jpg,.jpeg,.gif,.bmp" required>
+                                    </div>
+                                    <div class="upload-preview d-none" id="uploadPreview">
+                                        <img id="previewImage" src="" alt="Preview" class="preview-image">
+                                        <div class="preview-info">
+                                            <p class="file-name" id="fileName"></p>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary" id="removeFile">
+                                                <i class="fas fa-times"></i> Remove
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-text">
+                                    <i class="fas fa-info-circle me-1"></i>
+                                    Supported formats: PNG, JPG, JPEG, GIF, BMP (Max size: 16MB)
+                                </div>
+                            </div>
+                            
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg" id="submitBtn" disabled>
+                                    <span class="btn-text">
+                                        <i class="fas fa-magic me-2"></i>
+                                        Analyze Crowd
+                                    </span>
+                                    <span class="btn-loading d-none">
+                                        <i class="fas fa-spinner fa-spin me-2"></i>
+                                        Processing...
+                                    </span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <h3 class="text-center mb-4">How It Works</h3>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="text-center">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-upload fa-2x"></i>
+                    </div>
+                    <h5>1. Upload Image</h5>
+                    <p class="text-muted">Upload a clear image containing people you want to count</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="text-center">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-brain fa-2x"></i>
+                    </div>
+                    <h5>2. AI Analysis</h5>
+                    <p class="text-muted">Our AI model analyzes the image and generates a density map</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="text-center">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-chart-area fa-2x"></i>
+                    </div>
+                    <h5>3. Get Results</h5>
+                    <p class="text-muted">View the crowd count and thermal density visualization</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center mt-5 pt-4 border-top">
+            <p class="text-muted">
+                <i class="fas fa-robot me-2"></i>
+                 AI-Based Crowd Counting
+            </p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/upload.js') }}"></script>
+</body>
+</html>
