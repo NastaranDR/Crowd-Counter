@@ -4,6 +4,24 @@
 
 This is a web-based crowd counting application that uses a deep learning model ( Convolutional Neural Network for Crowd Counting ) to analyze images and estimate crowd density. The application provides a user-friendly interface for uploading images, processing them through an AI model, and displaying results with visual heatmaps showing crowd distribution patterns.
 
+![Crowd Counter Demo1]<img width="1920" height="902" alt="1" src="https://github.com/user-attachments/assets/5b68f529-4bc0-4c2e-b408-1c542a47278e" />
+
+![Crowd Counter Demo2]<img width="1920" height="892" alt="2" src="https://github.com/user-attachments/assets/18bb90da-9603-4c38-8e48-a0d0fb974f8a" />
+
+![Crowd Counter Demo3]<img width="1920" height="896" alt="3" src="https://github.com/user-attachments/assets/7b1514a7-0ff5-4b9f-90af-17b2b20be6ee" />
+
+![Crowd Counter Demo4]<img width="1920" height="896" alt="4" src="https://github.com/user-attachments/assets/3483c081-d4d9-4368-82be-686aada6ad7e" />
+
+
+![Crowd Counter Demo5]<img width="1920" height="896" alt="5" src="https://github.com/user-attachments/assets/2e198a98-6ba5-4e88-ac22-7421822678c3" />
+
+
+![Crowd Counter Demo6]<img width="1920" height="896" alt="6" src="https://github.com/user-attachments/assets/8a49e0e5-9a1f-41a6-a40f-32db18599810" />
+
+
+![Crowd Counter Demo7]<img width="1920" height="900" alt="7" src="https://github.com/user-attachments/assets/7eaf5f80-7abb-48ec-af97-1b30f81bb3f4" />
+
+
 The system is built as a Flask web application that handles image uploads, processes them through a pre-trained neural network model, and returns both numerical crowd counts and visual density heatmaps. It supports common image formats and includes proper error handling for production deployment.
 
 ## User Preferences
